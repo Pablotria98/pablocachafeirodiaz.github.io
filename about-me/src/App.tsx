@@ -1,31 +1,21 @@
-import { resumeData } from './resumeData';
+import { Routes, Route, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import AboutMe from './pages/AboutMe';
+import Projects from './pages/Projects';
 
-function App() {
+export default function App() {
   return (
-    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>{resumeData.name}</h1>
-      <h2>{resumeData.title}</h2>
-
-      <section>
-        <h3>Skills</h3>
-        <ul>
-          {resumeData.skills.map(skill => (
-            <li key={skill}>{skill}</li>
-          ))}
-        </ul>
-      </section>
-
-      <section>
-        <h3>Experience</h3>
-        {resumeData.experience.map((exp, index) => (
-          <div key={index}>
-            <strong>{exp.role}</strong> @ {exp.company} ({exp.years})
-            <p>{exp.description}</p>
-          </div>
-        ))}
-      </section>
+    <div className="p-4 font-sans">
+      <nav className="space-x-4 mb-6 text-blue-600">
+        <Link to="/">Home</Link>
+        <Link to="/about-me">About Me</Link>
+        <Link to="/projects">Projects</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about-me" element={<AboutMe />} />
+        <Route path="/projects" element={<Projects />} />
+      </Routes>
     </div>
   );
 }
-
-export default App;
