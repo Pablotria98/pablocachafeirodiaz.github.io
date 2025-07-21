@@ -3,19 +3,37 @@ import Home from './pages/Home';
 import AboutMe from './pages/AboutMe';
 import Projects from './pages/Projects';
 
-export default function App() {
+import { TerminalIntro } from "./components/TerminalIntro";
+import { ExperienceSection } from "./components/ExperienceSection";
+import { BlogSection } from "./components/BlogSection";
+import { useDarkMode } from "./hooks/useDarkMode";
+
+
+function App() {
+  const [darkMode, setDarkMode] = useDarkMode();
+
   return (
-    <div className="p-4 font-sans">
-      <nav className="space-x-4 mb-6 text-blue-600">
-        <Link to="/">Home</Link>
-        <Link to="/about-me">About Me</Link>
-        <Link to="/projects">Projects</Link>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about-me" element={<AboutMe />} />
-        <Route path="/projects" element={<Projects />} />
-      </Routes>
+    <div className="h-screen snap-y snap-mandatory overflow-scroll bg-gray-100 dark:bg-gray-900">
+      <header className="p-4 text-right fixed top-0 right-0 z-50">
+        <button
+          onClick={() => setDarkMode(!darkMode)}
+          className="px-4 py-2 bg-gray-300 dark:bg-gray-700 text-black dark:text-white rounded"
+        >
+          {darkMode ? "Light Mode" : "Dark Mode"}
+        </button>
+      </header>
+
+      <section className="snap-start h-screen flex items-center justify-center">
+        <TerminalIntro />
+      </section>
+      <section className="snap-start h-screen overflow-y-auto">
+        <ExperienceSection />
+      </section>
+      <section className="snap-start h-screen overflow-y-auto">
+        <BlogSection />
+      </section>
     </div>
   );
 }
+
+export default App;
