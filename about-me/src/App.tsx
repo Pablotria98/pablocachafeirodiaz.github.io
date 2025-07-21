@@ -1,39 +1,28 @@
-import { Routes, Route, Link } from 'react-router-dom';
-import Home from './pages/Home';
-import AboutMe from './pages/AboutMe';
-import Projects from './pages/Projects';
-
+import React from "react";
+import Navbar from "./components/Navbar";
 import { TerminalIntro } from "./components/TerminalIntro";
 import { ExperienceSection } from "./components/ExperienceSection";
 import { BlogSection } from "./components/BlogSection";
 import { useDarkMode } from "./hooks/useDarkMode";
 
-
-function App() {
-  const [darkMode, setDarkMode] = useDarkMode();
-
+const App: React.FC = () => {
   return (
-    <div className="h-screen snap-y snap-mandatory overflow-scroll bg-gray-100 dark:bg-gray-900">
-      <header className="p-4 text-right fixed top-0 right-0 z-50">
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          className="px-4 py-2 bg-gray-300 dark:bg-gray-700 text-black dark:text-white rounded"
-        >
-          {darkMode ? "Light Mode" : "Dark Mode"}
-        </button>
-      </header>
-
-      <section className="snap-start h-screen flex items-center justify-center">
-        <TerminalIntro />
+    <>
+      <Navbar />
+      <section id="home" className="h-screen flex items-center justify-center bg-gray-50">
+        <h1 className="text-4xl font-bold">Welcome to My Portfolio</h1>
       </section>
-      <section className="snap-start h-screen overflow-y-auto">
+      <section id="work" className="h-screen flex items-center justify-center bg-white">
+        <h2 className="text-3xl">About</h2>
+      </section>
+      <section id="about" className="h-screen flex items-center justify-center bg-gray-100">
         <ExperienceSection />
       </section>
-      <section className="snap-start h-screen overflow-y-auto">
-        <BlogSection />
+      <section id="contact" className="h-screen flex items-center justify-center bg-white">
+        <h2 className="text-3xl">Contact</h2>
       </section>
-    </div>
+    </>
   );
-}
+};
 
 export default App;
