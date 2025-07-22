@@ -1,4 +1,4 @@
-export type ExprienceItem = {
+export type ExperienceItem = {
     title: string;
     company: string;
     from: string;
@@ -6,7 +6,7 @@ export type ExprienceItem = {
     description: string;
 };
 
-export const experience: ExprienceItem[] = [
+export const experience: ExperienceItem[] = [
     {
         title: "Cybersecurity Automation Expert",
         company: "SecureOps Inc.",

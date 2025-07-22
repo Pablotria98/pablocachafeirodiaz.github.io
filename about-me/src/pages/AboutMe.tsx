@@ -1,16 +1,19 @@
-export default function AboutMe() {
+
+import React from "react";
+
+const AboutMe: React.FC = React.memo(() => {
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
+    <div className="min-h-screen bg-gray-50 py-12 px-4" aria-label="About Me Page">
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
         {/* Header */}
-        <div className="bg-slate-800 text-white p-8">
+        <header className="bg-slate-800 text-white p-8" aria-label="Header">
           <h1 className="text-4xl font-bold mb-2">About Me</h1>
           <p className="text-xl text-slate-300">Getting to know Pablo</p>
-        </div>
+        </header>
 
-        <div className="p-8 space-y-8">
+        <main className="p-8 space-y-8">
           {/* Professional Background */}
-          <section>
+          <section aria-label="Professional Background">
             <h2 className="text-2xl font-semibold text-slate-800 mb-4 border-b-2 border-slate-200 pb-2">
               Professional Background
             </h2>
@@ -26,31 +29,39 @@ export default function AboutMe() {
           </section>
 
           {/* Interests & Passions */}
-          <section>
+          <section aria-label="Interests & Passions">
             <h2 className="text-2xl font-semibold text-slate-800 mb-4 border-b-2 border-slate-200 pb-2">
               Interests & Passions
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-lg font-medium text-slate-800 mb-2">🔒 Cybersecurity</h3>
+                <h3 className="text-lg font-medium text-slate-800 mb-2" aria-label="Cybersecurity">
+                  🔒 Cybersecurity
+                </h3>
                 <p className="text-gray-700 text-sm">
                   Threat hunting, vulnerability assessment, and security automation
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-medium text-slate-800 mb-2">⚙️ Automation</h3>
+                <h3 className="text-lg font-medium text-slate-800 mb-2" aria-label="Automation">
+                  ⚙️ Automation
+                </h3>
                 <p className="text-gray-700 text-sm">
                   DevSecOps, CI/CD pipelines, and infrastructure as code
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-medium text-slate-800 mb-2">🌐 Web Technologies</h3>
+                <h3 className="text-lg font-medium text-slate-800 mb-2" aria-label="Web Technologies">
+                  🌐 Web Technologies
+                </h3>
                 <p className="text-gray-700 text-sm">
                   Modern frameworks, secure application development
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-medium text-slate-800 mb-2">📚 Continuous Learning</h3>
+                <h3 className="text-lg font-medium text-slate-800 mb-2" aria-label="Continuous Learning">
+                  📚 Continuous Learning
+                </h3>
                 <p className="text-gray-700 text-sm">
                   Staying current with emerging threats and technologies
                 </p>
@@ -59,7 +70,7 @@ export default function AboutMe() {
           </section>
 
           {/* Personal Philosophy */}
-          <section>
+          <section aria-label="Philosophy">
             <h2 className="text-2xl font-semibold text-slate-800 mb-4 border-b-2 border-slate-200 pb-2">
               Philosophy
             </h2>
@@ -68,8 +79,10 @@ export default function AboutMe() {
               secure by design, not as an afterthought."
             </blockquote>
           </section>
-        </div>
+        </main>
       </div>
     </div>
   );
-}
+});
+
+export default AboutMe;

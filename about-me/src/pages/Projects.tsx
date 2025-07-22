@@ -1,41 +1,53 @@
-export default function Projects() {
-  const projects = [
-    {
-      title: "Security Automation Framework",
-      description: "Automated threat detection and response system using Python and cloud services",
-      technologies: ["Python", "AWS", "Docker", "Kubernetes"],
-      status: "Active",
-      link: "#"
-    },
-    {
-      title: "Vulnerability Scanner",
-      description: "Custom vulnerability assessment tool with automated reporting",
-      technologies: ["Python", "PostgreSQL", "React", "REST API"],
-      status: "Completed",
-      link: "#"
-    },
-    {
-      title: "DevSecOps Pipeline",
-      description: "CI/CD pipeline with integrated security scanning and compliance checks",
-      technologies: ["Jenkins", "Docker", "Terraform", "SAST/DAST"],
-      status: "Active",
-      link: "#"
-    }
-  ];
+// ...existing code removed (duplicate)
 
+import React from "react";
+
+type Project = {
+  title: string;
+  description: string;
+  technologies: string[];
+  status: string;
+  link: string;
+};
+
+const projects: Project[] = [
+  {
+    title: "Security Automation Framework",
+    description: "Automated threat detection and response system using Python and cloud services",
+    technologies: ["Python", "AWS", "Docker", "Kubernetes"],
+    status: "Active",
+    link: "#"
+  },
+  {
+    title: "Vulnerability Scanner",
+    description: "Custom vulnerability assessment tool with automated reporting",
+    technologies: ["Python", "PostgreSQL", "React", "REST API"],
+    status: "Completed",
+    link: "#"
+  },
+  {
+    title: "DevSecOps Pipeline",
+    description: "CI/CD pipeline with integrated security scanning and compliance checks",
+    technologies: ["Jenkins", "Docker", "Terraform", "SAST/DAST"],
+    status: "Active",
+    link: "#"
+  }
+];
+
+const Projects: React.FC = React.memo(() => {
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
+    <div className="min-h-screen bg-gray-50 py-12 px-4" aria-label="Projects Page">
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
         {/* Header */}
-        <div className="bg-slate-800 text-white p-8">
+        <header className="bg-slate-800 text-white p-8" aria-label="Header">
           <h1 className="text-4xl font-bold mb-2">Projects</h1>
           <p className="text-xl text-slate-300">Featured work and contributions</p>
-        </div>
+        </header>
 
-        <div className="p-8">
+        <main className="p-8">
           <div className="grid gap-6">
             {projects.map((project, index) => (
-              <div key={index} className="border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+              <div key={index} className="border border-slate-200 rounded-lg p-6 hover:shadow-md transition-shadow" aria-label={`Project: ${project.title}`}>
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-xl font-semibold text-slate-800">{project.title}</h3>
                   <span className={`px-3 py-1 rounded-full text-xs font-medium ${
@@ -46,11 +58,9 @@ export default function Projects() {
                     {project.status}
                   </span>
                 </div>
-                
                 <p className="text-gray-700 mb-4 leading-relaxed">
                   {project.description}
                 </p>
-                
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech) => (
                     <span 
@@ -61,28 +71,30 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
-                
                 <a 
                   href={project.link}
                   className="inline-flex items-center text-slate-600 hover:text-slate-800 transition-colors"
+                  aria-label={`View details for ${project.title}`}
                 >
                   View Project →
                 </a>
               </div>
             ))}
           </div>
-          
           {/* GitHub Link */}
           <div className="mt-8 text-center">
             <a 
               href="https://github.com/pablotria98"
               className="inline-flex items-center px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition-colors"
+              aria-label="View Pablo's GitHub profile"
             >
-              📂 View All Projects on GitHub
+              GitHub Profile
             </a>
           </div>
-        </div>
+        </main>
       </div>
     </div>
   );
-}
+});
+
+export default Projects;
